@@ -1,0 +1,137 @@
+.video-background {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding-top: 30vh;
+    line-height: 1.4;
+}
+
+.video__shopbtn {
+    display: inline-block;
+    background-color: rgb(210, 209, 212);
+    color: #0d3310;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+
+.video__shopbtn:hover {
+    cursor: pointer;
+    background-color: rgb(104, 140, 100);
+}
+
+/* Short Cuts */
+.shop-shortcuts-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    background-color: #ecedec;
+}
+
+.shop-shortcuts-container a {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    background-color: #8b9c8c;
+    color: white;
+    text-decoration: none;
+    border: solid white 2px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.shop-shortcuts-container a:hover {
+    background-color: #1e7231;
+    transform: scale(1.02);
+}
+
+/* Plant club */
+.plant-club-container {
+    background-image: url("/images/bellpepper.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 40px;
+}
+
+.plant-club-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+    gap: 20px;
+}
+
+.plant-club-info img {
+    max-width: 300px;
+    height: auto;
+    align-self: center;
+}
+
+.plant-club-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #8b9c8c;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.plant-club__heading {
+    font-size: 32px;
+    font-weight: 700;
+    align-self: center;
+    margin: 0;
+}
+
+.plant-club__body {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    border-radius: 30px;
+    color: rgb(242, 242, 242);
+}
+
+.plant-club__btn {
+    padding: 14px 28px;
+    background-color: #1e7231;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: center;
+}
+
+.plant-club__btn:hover {
+    background-color: #145a25;
+    transform: scale(1.05);
+}
