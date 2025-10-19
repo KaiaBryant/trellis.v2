@@ -3,6 +3,10 @@ import "../assets/styles/Home.css";
 import heroVideo from "../assets/images/homepagehero.mp4";
 import heroImage from "../assets/images/Untitled design.png";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper/modules";
 
 export default function Home() {
     return (
@@ -21,13 +25,37 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ================= SHOP SHORTCUTS ================= */}
+
+            {/* SHOP SHORTCUTS (Swiper) */}
             <section className="shop-shortcuts-container">
+                <h2>Shop by Category</h2>
+                <div className="shop-shortcuts-swiper">
+                    <Swiper
+                        modules={[Navigation, Autoplay]}
+                        spaceBetween={20}
+                        slidesPerView={2}
+                        navigation
+                        autoplay={{ delay: 2500, disableOnInteraction: false }}
+                        breakpoints={{
+                            640: { slidesPerView: 3 },
+                            1024: { slidesPerView: 4 },
+                        }}
+                    >
+                        <SwiperSlide><Link to="/shop">Seeds</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop">Planters</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop">Accessories</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop">Soil & Fertilizers</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop">Tools</Link></SwiperSlide>
+                    </Swiper>
+                </div>
+            </section>
+            {/* ================= SHOP SHORTCUTS ================= */}
+            {/* <section className="shop-shortcuts-container  slide" >
                 <Link to="/shop">Seeds</Link>
                 <Link to="/shop">Planters</Link>
                 <Link to="/shop">Accessories</Link>
                 <Link to="/shop">Soil & Fertilizers</Link>
-            </section>
+            </section> */}
 
             {/* ================= PLANT CLUB SECTION ================= */}
             <section className="plant-club-container">

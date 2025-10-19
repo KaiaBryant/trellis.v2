@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .video-background {
     position: relative;
     height: 70vh;
@@ -41,7 +47,7 @@
 }
 
 /* Short Cuts */
-.shop-shortcuts-container {
+/* .shop-shortcuts-container {
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -63,6 +69,40 @@
 }
 
 .shop-shortcuts-container a:hover {
+    background-color: #1e7231;
+    transform: scale(1.02);
+} */
+.shop-shortcuts-container {
+
+    justify-content: center;
+}
+
+.shop-shortcuts-swiper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    background-color: #ecedec;
+    padding: 20px;
+}
+
+.shop-shortcuts-swiper a {
+    flex: 1;
+    text-align: center;
+    padding: 30px;
+    background-color: #8b9c8c;
+    color: white;
+    text-decoration: none;
+    border: solid white 2px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    border-radius: 10px;
+    display: block;
+
+}
+
+.shop-shortcuts-swiper a:hover {
     background-color: #1e7231;
     transform: scale(1.02);
 }
