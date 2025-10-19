@@ -57,11 +57,30 @@ app.post("/api/contact", async (req, res) => {
 
 app.get("/api/products", async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM products");
+        const { category, minPrice, maxPrice } = req.query;
+        let query = "SELECT * FROM products WHERE 1=1";
+        const values = [];
+
+        if (category) {
+            query += " AND category = ?";
+            values.push(category);
+        }
+
+        if (minPrice) {
+            query += " AND price >= ?";
+            values.push(minPrice);
+        }
+
+        if (maxPrice) {
+            query += " AND price <= ?";
+            values.push(maxPrice);
+        }
+
+        const [rows] = await pool.query(query, values);
         res.json(rows);
-    } catch (error) {
-        console.error("Error fetching products:", error);
-        res.status(500).json({ error: "Failed to load products" });
+    } catch (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).json({ error: "Server error" });
     }
 });
 

@@ -41,11 +41,12 @@ export default function Home() {
                             1024: { slidesPerView: 4 },
                         }}
                     >
-                        <SwiperSlide><Link to="/shop">Seeds</Link></SwiperSlide>
-                        <SwiperSlide><Link to="/shop">Planters</Link></SwiperSlide>
-                        <SwiperSlide><Link to="/shop">Accessories</Link></SwiperSlide>
-                        <SwiperSlide><Link to="/shop">Soil & Fertilizers</Link></SwiperSlide>
-                        <SwiperSlide><Link to="/shop">Tools</Link></SwiperSlide>
+                        {/* PASS CATEGORY THROUGH LINK */}
+                        <SwiperSlide><Link to="/shop" state={{ category: "Seeds" }}>Seeds</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop" state={{ category: "Pots" }}>Planters</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop" state={{ category: "Accessories" }}>Tools/Accessories</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop" state={{ category: "Soil" }}>Soil</Link></SwiperSlide>
+
                     </Swiper>
                 </div>
             </section>
