@@ -1,9 +1,8 @@
-/* Main section */
-.contact-main {
+.contact.main {
     position: relative;
     max-height: 60vh;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .contact__img {
@@ -26,9 +25,10 @@
     width: 60%;
     margin: 0 auto;
     bottom: 3rem;
-    background-color: #17556d;
+    background-color: #17556D;
     color: white;
     border-radius: 8px;
+
 }
 
 .contact__text h2 {
@@ -68,6 +68,7 @@
     gap: 20px;
 }
 
+
 label {
     display: block;
     font-weight: 600;
@@ -90,12 +91,12 @@ button {
     font-weight: bold;
     border: none;
     cursor: pointer;
-    transition: 0.2s ease;
 }
 
 button:hover {
-    background-color: aquamarine;
+    background-color: rgb(215, 110, 24);
 }
+
 
 /* Success/Error message */
 
@@ -117,4 +118,76 @@ button:hover {
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;
+}
+
+/*  Mobile */
+@media (max-width: 390px) {
+    .contact__img img {
+        height: 240px;
+    }
+
+    .contact__text {
+        width: 90%;
+        padding: 1.5rem;
+        bottom: 1.5rem;
+    }
+
+    .contact__text h2 {
+        font-size: 2rem;
+    }
+
+    .contact__text p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .contact-signup {
+        font-size: 1.2rem;
+    }
+
+    .footer-inner-container {
+        justify-content: center;
+        text-align: center;
+    }
+
+}
+
+/* Tablet */
+@media (min-width: 391px) and (max-width: 1020px) {
+    .contact__img img {
+        height: 320px;
+    }
+
+    .contact__text {
+        width: 80%;
+        padding: 2rem;
+        bottom: 2rem;
+    }
+
+    .contact__text h2 {
+        font-size: 2.5rem;
+    }
+
+    .contact__text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .contact-signup {
+        font-size: 1.5rem;
+    }
+
+    .footer-inner-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: #e1e4de;
+        padding: 30px;
+        width: 100%;
+    }
+
+    .footer-column {
+        flex: 1 1 1;
+        margin: 20px;
+    }
 }

@@ -1,39 +1,42 @@
 import React from "react";
 import "../assets/styles/Footer.css";
+import SocialIcons from "./SocialIcons";
+
+import InstagramIcon from "../assets/images/instagram.svg";
+import GitHubIcon from "../assets/images/github.svg";
+import LinkedInIcon from "../assets/images/linkedin.svg";
+import TikTokIcon from "../assets/images/tiktok.svg";
 
 export default function Footer() {
     return (
         <footer className="full-footer-container">
             <div className="footer-inner-container">
 
-                {/* Newsletter Signup */}
-                <div className="footer-signup">
-                    <h4>Stay connected</h4>
-                    <p>Join our community for future updates.</p>
-
-                    <form
-                        id="footer-form"
-                        method="post"
-                        action="#"
-                        className="footer-form"
-                        aria-label="Email Sign-up Form"
-                    >
-                        <label htmlFor="email-signup" className="visually-hidden">
-                            Email address
-                        </label>
-                        <input
-                            type="email"
-                            id="email-signup"
-                            name="email"
-                            placeholder="Enter your email"
-                            required
+                {/* Social Media Links */}
+                <div className="footer-socials">
+                    {/* <h4>Connect with Us</h4> */}
+                    <div className="socials-container">
+                        <SocialIcons
+                            href="https://www.instagram.com/"
+                            icon={InstagramIcon}
+                            label="Instagram"
                         />
-                        <button type="submit">Subscribe</button>
-                        <p
-                            id="error-message"
-                            style={{ color: "red", fontSize: "0.9rem", display: "none" }}
-                        ></p>
-                    </form>
+                        <SocialIcons
+                            href="https://github.com/KaiaBryant"
+                            icon={GitHubIcon}
+                            label="GitHub"
+                        />
+                        <SocialIcons
+                            href="https://twitter.com/"
+                            icon={LinkedInIcon}
+                            label="LinkedIn"
+                        />
+                        <SocialIcons
+                            href="https://www.youtube.com/"
+                            icon={TikTokIcon}
+                            label="TikTok"
+                        />
+                    </div>
                 </div>
 
                 {/* Logo */}

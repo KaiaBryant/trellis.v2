@@ -1,8 +1,8 @@
 // src/pages/Contact.jsx
 import React, { useState } from "react";
 import axios from "axios";
-// import "../assets/styles/Contact.css";
-
+import "../assets/styles/Contact.css";
+import contactImage from "../assets/images/contact-page-img.jpg";
 
 
 
@@ -79,7 +79,7 @@ export default function Contact() {
     return (
         <div className="contact-main">
             <div className="contact__img">
-                <img src="/images/contact-page-img.jpg" alt="potting accessories" />
+                <img src={contactImage} alt="potting accessories" />
             </div>
             <div className="contact__text">
                 <h2>LET'S GROW TOGETHER!</h2>

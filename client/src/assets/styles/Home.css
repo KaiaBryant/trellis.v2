@@ -78,10 +78,10 @@
 }
 
 .shop-shortcuts-container h2 {
-    color: rgb(4, 102, 4);
+    color: #1d6f07;
     text-align: center;
     padding: 20px;
-    background-color: #b9b9b9;
+    background-color: #b9b9b980;
 }
 
 .shop-shortcuts-swiper {
@@ -163,6 +163,7 @@
     margin: 0;
     border-radius: 30px;
     color: rgb(242, 242, 242);
+    text-align: center;
 }
 
 .plant-club__btn {

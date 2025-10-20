@@ -72,8 +72,9 @@ export default function Home() {
                             Plant Club offers four levels of membership to help you feel
                             supported as you continue your food-growing journey!
                         </p>
-                        <button className="plant-club__btn">Join Now</button>
-                    </div>
+                        <Link to="/contact" className="plant-club__btn">
+                            Join Now
+                        </Link>                    </div>
                 </div>
             </section>
         </div>
