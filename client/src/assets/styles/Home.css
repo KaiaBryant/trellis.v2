@@ -77,6 +77,13 @@
     justify-content: center;
 }
 
+.shop-shortcuts-container h2 {
+    color: rgb(4, 102, 4);
+    text-align: center;
+    padding: 20px;
+    background-color: #b9b9b9;
+}
+
 .shop-shortcuts-swiper {
     display: flex;
     justify-content: center;
@@ -109,7 +116,7 @@
 
 /* Plant club */
 .plant-club-container {
-    background-image: url("/images/bellpepper.jpg");
+    background-image: url("/client/public/images/bellpepper.jpg");
     display: flex;
     justify-content: center;
     align-items: center;

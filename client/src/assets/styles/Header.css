@@ -1,12 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
 .full-header {
     position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .upper-header-wrap {
@@ -24,7 +19,6 @@
     font-family: "Allan", serif;
     font-weight: 700;
     font-style: normal;
-
 }
 
 .uhead__title a {
@@ -43,7 +37,6 @@
     justify-content: space-evenly;
     padding: 20px 10px;
     background-color: rgb(240, 248, 240);
-
 }
 
 .navbar a {
@@ -54,4 +47,5 @@
 
 .navbar a:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
