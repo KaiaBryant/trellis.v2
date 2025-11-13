@@ -95,7 +95,7 @@
 }
 
 
-/* ===== Responsive ===== */
+/*  Responsive  */
 @media (max-width: 768px) {
     #product-list {
         grid-template-columns: repeat(2, 1fr);

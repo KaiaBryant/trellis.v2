@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 
-// Global styles (optional)
+// Global styles (DO NOT NEED)
 import "./style.css";
 
 export default function App() {

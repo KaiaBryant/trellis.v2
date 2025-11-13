@@ -46,32 +46,6 @@
     background-color: rgb(104, 140, 100);
 }
 
-/* Short Cuts */
-/* .shop-shortcuts-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    background-color: #ecedec;
-}
-
-.shop-shortcuts-container a {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
-    background-color: #8b9c8c;
-    color: white;
-    text-decoration: none;
-    border: solid white 2px;
-    font-weight: 600;
-    font-size: 18px;
-    transition: all 0.2s ease;
-}
-
-.shop-shortcuts-container a:hover {
-    background-color: #1e7231;
-    transform: scale(1.02);
-} */
 .shop-shortcuts-container {
 
     justify-content: center;

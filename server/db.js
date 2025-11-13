@@ -3,22 +3,21 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const pool = mysql.createPool({
+const connection = mysql.createConnection({
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT || 3306,
-    connectionLimit: 10,
+    connectTimeout: 30000,
 });
 
-pool.getConnection((err, connection) => {
+connection.connect((err) => {
     if (err) {
-        console.error("Error connecting to RDS:", err.message);
-    } else {
-        console.log("Connected to database successfully!");
-        connection.release();
+        console.error("Database connection failed:", err);
+        return;
     }
+    console.log("Connected to Railway MySQL!");
 });
 
-export default pool.promise();
+export default connection;

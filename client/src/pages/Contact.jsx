@@ -1,4 +1,3 @@
-// src/pages/Contact.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import "../assets/styles/Contact.css";
@@ -18,7 +17,7 @@ export default function Contact() {
 
     const [message, setMessage] = useState("");
 
-    // Regex patterns (same as your JS)
+    // Regex patterns 
     const nameReg = /^[A-Za-zÀ-ÖØ-öø-ÿ'-]{1,20}$/;
     const emailReg = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
     const phoneReg = /^\d{10}$/;

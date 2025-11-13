@@ -11,7 +11,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 export default function Home() {
     return (
         <div className="home-container">
-            {/* ================= HERO SECTION ================= */}
+            {/*HERO*/}
             <section className="video-background">
                 <video autoPlay muted loop playsInline>
                     <source src={heroVideo} type="video/mp4" />
@@ -58,7 +58,7 @@ export default function Home() {
                 <Link to="/shop">Soil & Fertilizers</Link>
             </section> */}
 
-            {/* ================= PLANT CLUB SECTION ================= */}
+            {/* PLANT CLUB SECTION*/}
             <section className="plant-club-container">
                 <div className="plant-club-main">
                     <div className="plant-club-info">

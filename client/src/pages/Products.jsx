@@ -6,8 +6,7 @@ import "../assets/styles/Products.css";
 export default function Products() {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState("");
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(150);
+
     const [error, setError] = useState("");
 
     const location = useLocation();
@@ -42,10 +41,10 @@ export default function Products() {
     return (
         <div className="products-page">
             <h2 className="products-title">
-                {category ? `${category} Products` : "All Products"}
+                {category ? `Shop ${category}` : "Shop All"}
             </h2>
 
-            {/* Filter Section */}
+            {/* FILTER SECTION */}
             <div className="filter-container">
                 <div className="filter-group">
                     <label htmlFor="category">Category:</label>
@@ -57,7 +56,7 @@ export default function Products() {
                         <option value="">All</option>
                         <option value="Seeds">Seeds</option>
                         <option value="Soil">Soil</option>
-                        <option value="Pots">Pots</option>
+                        <option value="Planters">Planters</option>
                         <option value="Accessories">Accessories</option>
                     </select>
                 </div>
@@ -84,18 +83,22 @@ export default function Products() {
                 </div> */}
             </div>
 
-            {/* Product Grid */}
+            {/* PRODUCT GRID */}
             {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
             <div id="product-list">
                 {products.length > 0 ? (
                     products.map((product) => (
                         <div className="product" key={product.id}>
                             <img
-                                src={product.image_default}
+                                src={`http://localhost:5000${product.default_image}`}
                                 alt={product.name}
                                 className="product-image"
-                                onMouseOver={(e) => (e.currentTarget.src = product.image_hover)}
-                                onMouseOut={(e) => (e.currentTarget.src = product.image_default)}
+                                onMouseOver={(e) => {
+                                    e.currentTarget.src = `http://localhost:5000${product.hover_image}`;
+                                }}
+                                onMouseOut={(e) => {
+                                    e.currentTarget.src = `http://localhost:5000${product.default_image}`;
+                                }}
                             />
                             <h4>{product.name}</h4>
                             <p className="price">${Number(product.price).toFixed(2)}</p>

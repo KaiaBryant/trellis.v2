@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import pool from "./db.js";
+import db from "./db.js";
 import mysql from "mysql2";
 
 dotenv.config();
@@ -12,77 +12,59 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// DB connection
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
-
-// Verify DB connection
-pool.getConnection((err, connection) => {
-    if (err) {
-        console.error("Database connection failed:", err.message);
-    } else {
-        console.log("Connected to MySQL database successfully!");
-        connection.release();
-    }
-});
+// Serve images
+app.use("/images", express.static("images"));
 
 
 // Routes
-app.post("/api/contact", async (req, res) => {
-    try {
-        const { firstName, lastName, email, phone, seed, comments } = req.body;
+app.post("/api/contact", (req, res) => {
+    const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        seed,
+        comments
+    } = req.body;
 
-        // Validation 
-        if (!firstName || !lastName || !email || !phone || !seed) {
-            return res.status(400).json({ error: "Missing required fields" });
+    // Convert React fields → SQL fields
+    const sql = `
+        INSERT INTO contact (first_name, last_name, email, phone, seed_option, comments)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
+
+    db.query(
+        sql,
+        [firstName, lastName, email, phone, seed, comments],
+        (err, result) => {
+            if (err) {
+                console.error("DB INSERT ERROR:", err);
+                return res.status(400).json({ error: "Failed to submit form" }); // prevents 500 crash
+            }
+
+            res.status(200).json({ message: "Form submitted successfully!" });
         }
-
-        const [result] = await pool.query(
-            `INSERT INTO contacts (first_name, last_name, email, phone, seed_choice, comments)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-            [firstName, lastName, email, phone, seed, comments]
-        );
-
-        res.status(201).json({ message: "Contact submitted successfully!", id: result.insertId });
-    } catch (error) {
-        console.error("Error inserting contact:", error);
-        res.status(500).json({ error: "Server error" });
-    }
+    );
 });
 
 
-app.get("/api/products", async (req, res) => {
-    try {
-        const { category, minPrice, maxPrice } = req.query;
-        let query = "SELECT * FROM products WHERE 1=1";
-        const values = [];
+app.get("/api/products", (req, res) => {
+    const { category } = req.query;
 
-        if (category) {
-            query += " AND category = ?";
-            values.push(category);
-        }
+    let query = "SELECT * FROM products";
+    const params = [];
 
-        if (minPrice) {
-            query += " AND price >= ?";
-            values.push(minPrice);
-        }
-
-        if (maxPrice) {
-            query += " AND price <= ?";
-            values.push(maxPrice);
-        }
-
-        const [rows] = await pool.query(query, values);
-        res.json(rows);
-    } catch (err) {
-        console.error("Error fetching products:", err);
-        res.status(500).json({ error: "Server error" });
+    if (category) {
+        query += " WHERE category = ?";
+        params.push(category);
     }
+
+    db.query(query, params, (err, results) => {
+        if (err) return res.status(500).json({ error: "DB Error" });
+        res.json(results);
+    });
 });
+
 
 
 // Start server
