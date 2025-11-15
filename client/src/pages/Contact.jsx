@@ -59,7 +59,7 @@ export default function Contact() {
 
         try {
             // Send data to backend API
-            const res = await axios.post("http://localhost:5000/api/contact", formData);
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, formData);
             setMessage("Form submitted successfully!");
             setFormData({
                 firstName: "",

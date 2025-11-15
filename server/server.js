@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: "*", // frontend Railway domain
+    origin: "trellisv2.up.railway.app", // frontend Railway domain
     methods: "GET,POST,PUT,DELETE",
 }));
 app.use(express.json());
