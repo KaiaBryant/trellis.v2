@@ -24,7 +24,7 @@ export default function Products() {
             const params = {};
             if (category) params.category = category;
 
-            const res = await axios.get("http://localhost:5000/api/products", { params });
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/contact`, { params });
             setProducts(res.data);
             setError("");
         } catch (err) {
