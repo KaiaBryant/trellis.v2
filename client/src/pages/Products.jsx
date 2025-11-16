@@ -6,10 +6,10 @@ import "../assets/styles/Products.css";
 export default function Products() {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState("");
-
     const [error, setError] = useState("");
-
     const location = useLocation();
+    const api = import.meta.env.VITE_API_URL;
+
 
     // When navigating from the homepage load category
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function Products() {
             const params = {};
             if (category) params.category = category;
 
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/contact`, { params });
+            const res = await axios.get(`${api}/api/products`, { params });
             setProducts(res.data);
             setError("");
         } catch (err) {
@@ -44,7 +44,7 @@ export default function Products() {
                 {category ? `Shop ${category}` : "Shop All"}
             </h2>
 
-            {/* FILTER SECTION */}
+            {/* Filter section */}
             <div className="filter-container">
                 <div className="filter-group">
                     <label htmlFor="category">Category:</label>
@@ -61,26 +61,6 @@ export default function Products() {
                     </select>
                 </div>
 
-                {/* PRICE RANGE */}
-                {/* <div className="filter-group">
-                    <label>Price Range: ${minPrice} - ${maxPrice}</label>
-                    <div className="range-inputs">
-                        <input
-                            type="range"
-                            min="0"
-                            max="150"
-                            value={minPrice}
-                            onChange={(e) => setMinPrice(Number(e.target.value))}
-                        />
-                        <input
-                            type="range"
-                            min="0"
-                            max="150"
-                            value={maxPrice}
-                            onChange={(e) => setMaxPrice(Number(e.target.value))}
-                        />
-                    </div>
-                </div> */}
             </div>
 
             {/* PRODUCT GRID */}
@@ -90,15 +70,11 @@ export default function Products() {
                     products.map((product) => (
                         <div className="product" key={product.id}>
                             <img
-                                src={`http://localhost:5000${product.default_image}`}
+                                src={`${api}${product.default_image}`}
                                 alt={product.name}
                                 className="product-image"
-                                onMouseOver={(e) => {
-                                    e.currentTarget.src = `http://localhost:5000${product.hover_image}`;
-                                }}
-                                onMouseOut={(e) => {
-                                    e.currentTarget.src = `http://localhost:5000${product.default_image}`;
-                                }}
+                                onMouseOver={(e) => (e.currentTarget.src = `${api}${product.hover_image}`)}
+                                onMouseOut={(e) => (e.currentTarget.src = `${api}${product.default_image}`)}
                             />
                             <h4>{product.name}</h4>
                             <p className="price">${Number(product.price).toFixed(2)}</p>
