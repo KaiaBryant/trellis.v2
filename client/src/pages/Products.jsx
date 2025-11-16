@@ -25,7 +25,8 @@ export default function Products() {
             if (category) params.category = category;
 
             const res = await axios.get(`${api}/api/products`, { params });
-            setProducts(res.data);
+            setProducts(Array.isArray(res.data) ? res.data : []);
+
             setError("");
         } catch (err) {
             console.error("Error fetching products:", err);
