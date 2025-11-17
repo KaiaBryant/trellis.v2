@@ -9,23 +9,19 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({
-    origin: ["http://localhost:5173", "https://trellisv2.up.railway.app/"],
-    methods: ["GET", "POST"],
-}));
 
 const allowedOrigins = [
     "http://localhost:5173",                // local frontend
     "https://trellisv2.up.railway.app",     // deployed frontend
 ];
 
-app.use(
-    cors({
-        origin: allowedOrigins,
-        credentials: true,
-    })
-);
+app.use(cors({
+    origin: ["http://localhost:5173", "https://trellisv2.up.railway.app/"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
+// Serve JSON 
 app.use(express.json());
 
 // Serve images
