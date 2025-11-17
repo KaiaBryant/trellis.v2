@@ -90,12 +90,13 @@
 
 /* Plant club */
 .plant-club-container {
-    background-image: url("/client/public/images/bellpepper.jpg");
+    background-image: url("../images/bellpepper.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
     padding: 40px;
+
 }
 
 .plant-club-main {
@@ -151,6 +152,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     align-self: center;
+    text-decoration: none;
 }
 
 .plant-club__btn:hover {
