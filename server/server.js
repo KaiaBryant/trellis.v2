@@ -16,7 +16,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: ["http://localhost:5173", "https://trellisv2.up.railway.app/"],
+    origin: ["http://localhost:5173", "https://trellisv2.up.railway.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
