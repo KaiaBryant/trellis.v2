@@ -11,7 +11,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 export default function Home() {
     return (
         <div className="home-container">
-            {/*HERO*/}
+            {/*Hero*/}
             <section className="video-background">
                 <video autoPlay muted loop playsInline>
                     <source src={heroVideo} type="video/mp4" />
@@ -26,7 +26,7 @@ export default function Home() {
             </section>
 
 
-            {/* SHOP SHORTCUTS (Swiper) */}
+            {/* Shop Shortcuts (Swiper) */}
             <section className="shop-shortcuts-container">
                 <h2>Shop by Category</h2>
                 <div className="shop-shortcuts-swiper">
@@ -35,15 +35,15 @@ export default function Home() {
                         spaceBetween={20}
                         slidesPerView={2}
                         navigation
-                        autoplay={{ delay: 2500, disableOnInteraction: false }}
+                        autoplay={{ delay: 2500, disableOnInteraction: false }} //rotate every 2.5 secs
                         breakpoints={{
-                            640: { slidesPerView: 3 },
-                            1024: { slidesPerView: 4 },
+                            640: { slidesPerView: 3 }, // tablet
+                            1024: { slidesPerView: 4 }, // desktop
                         }}
                     >
-                        {/* PASS CATEGORY THROUGH LINK */}
+                        {/* Pass Category through { Link }*/}
                         <SwiperSlide><Link to="/shop" state={{ category: "Seeds" }}>Seeds</Link></SwiperSlide>
-                        <SwiperSlide><Link to="/shop" state={{ category: "Pots" }}>Planters</Link></SwiperSlide>
+                        <SwiperSlide><Link to="/shop" state={{ category: "Planters" }}>Planters</Link></SwiperSlide>
                         <SwiperSlide><Link to="/shop" state={{ category: "Accessories" }}>Tools/Accessories</Link></SwiperSlide>
                         <SwiperSlide><Link to="/shop" state={{ category: "Soil" }}>Soil</Link></SwiperSlide>
 

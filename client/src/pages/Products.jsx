@@ -3,32 +3,34 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import "../assets/styles/Products.css";
 
-export default function Products() {
-    const [products, setProducts] = useState([]);
-    const [category, setCategory] = useState("");
-    const [error, setError] = useState("");
-    const location = useLocation();
-    const api = import.meta.env.VITE_API_URL;
+
+// Initiate setter function using useState to remember data between renders 
+export default function Products() { // defining functional compenent to fetch + display 
+    const [products, setProducts] = useState([]); // hold and updates products
+    const [category, setCategory] = useState(""); // stores category. begins with no filters applied
+    const [error, setError] = useState(""); // stores errors 
+    const location = useLocation(); // from react-router-dom to route data
+    const api = import.meta.env.VITE_API_URL; // deployed backend env
 
 
     // When navigating from the homepage load category
     useEffect(() => {
-        if (location.state && location.state.category) {
-            setCategory(location.state.category);
+        if (location.state && location.state.category) { // checks if a category is passed 
+            setCategory(location.state.category);  // if so, update category state
         }
     }, [location.state]);
 
-    // Fetch products with filters
+    // Fetch products from API
     const fetchProducts = async () => {
         try {
-            const params = {};
-            if (category) params.category = category;
+            const params = {}; // empty object to hold filter query params
+            if (category) params.category = category; // once selected, inlcude query 
 
-            const res = await axios.get(`${api}/api/products`, { params });
-            setProducts(Array.isArray(res.data) ? res.data : []);
+            const res = await axios.get(`${api}/api/products`, { params }); //axios converts 
+            setProducts(Array.isArray(res.data) ? res.data : []); //stores retuened product list in state
 
-            setError("");
-        } catch (err) {
+            setError(""); // clear previous errors on success
+        } catch (err) { // show error messages 
             console.error("Error fetching products:", err);
             setError("Failed to load products");
         }
@@ -36,7 +38,7 @@ export default function Products() {
 
     // Run fetch whenever filters or category change
     useEffect(() => {
-        fetchProducts();
+        fetchProducts(); // run whenever category changes, reload automatically
     }, [category]);
 
     return (
@@ -64,7 +66,7 @@ export default function Products() {
 
             </div>
 
-            {/* PRODUCT GRID */}
+            {/* Product Grid */}
             {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
             <div id="product-list">
                 {products.length > 0 ? (
