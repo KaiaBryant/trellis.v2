@@ -13,6 +13,19 @@ app.use(cors({
     origin: ["http://localhost:5173", "https://trellisv2.up.railway.app/"],
     methods: ["GET", "POST"],
 }));
+
+const allowedOrigins = [
+    "http://localhost:5173",                // local frontend
+    "https://trellisv2.up.railway.app",     // deployed frontend
+];
+
+app.use(
+    cors({
+        origin: allowedOrigins,
+        credentials: true,
+    })
+);
+
 app.use(express.json());
 
 // Serve images
